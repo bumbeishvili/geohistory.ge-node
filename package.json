@@ -1,0 +1,23 @@
+{
+    "name": "geohistory.ge-node",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bumbeishvili/geohistory.ge-node.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bumbeishvili/geohistory.ge-node/issues"
+    },
+    "homepage": "https://github.com/bumbeishvili/geohistory.ge-node#readme",
+    "dependencies": {
+        "csv-parse": "^2.5.0",
+        "express": "^4.16.2"
+    }
+}
