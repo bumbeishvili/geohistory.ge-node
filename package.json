@@ -17,7 +17,9 @@
     },
     "homepage": "https://github.com/bumbeishvili/geohistory.ge-node#readme",
     "dependencies": {
+        "cors": "^2.8.4",
         "csv-parse": "^2.5.0",
-        "express": "^4.16.2"
+        "express": "^4.16.2",
+        "fast-csv": "^2.4.1"
     }
 }
