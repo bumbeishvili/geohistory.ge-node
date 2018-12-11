@@ -1,4 +1,5 @@
 const mongojs = require('mongojs');
+const search = require('./search')
 const mdao = {};
 
 mdao.getDB = function getDB() {
@@ -12,19 +13,15 @@ mdao.getDB = function getDB() {
 	return db;
 };
 
-mdao.getPersons = function(parameters) {
+mdao.getPersons = function(fname, lname, city) {
 	var db = mdao.getDB();
 	return new Promise((resolve, reject) => {
-		const result = db.ww2persons
-			.find(
-				{
-					name: 250
-				},
-				function(err, dbData) {
-					 	resolve(dbData);
-				}
-			)
-			
+		const query = search.getSearchQueryObject(fname, lname, city);
+		console.log(query)
+		const result = db.ww2persons.find(query, function(err, dbData) {
+			resolve(dbData.filter((d,i)=>i<30));
+		});
+
 		// end of find
 	}); //end of promise
 };

@@ -20,8 +20,10 @@ app.get('/search/:fname/:lname/:city', (req, res, next) => {
 	const lname = req.params.lname;
 	const city = req.params.city;
 
+
+
     mdao
-    .getPersons()
+    .getPersons(fname,lname,city)
     .then((persons) => {
        res.json(persons);
 	});
