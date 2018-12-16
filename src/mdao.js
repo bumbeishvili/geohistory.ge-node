@@ -19,7 +19,7 @@ mdao.getPersons = function(fname, lname, city) {
 		const query = search.getSearchQueryObject(fname, lname, city);
 		console.log(query)
 		const result = db.ww2persons.find(query, function(err, dbData) {
-			resolve(dbData.filter((d,i)=>i<150));
+			resolve(dbData.filter((d,i)=>i<500));
 		})
 		//.limit(5)
 
