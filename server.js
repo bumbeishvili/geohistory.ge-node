@@ -5,9 +5,9 @@ var csv = require('fast-csv');
 var c = new EncodingConverter();
 var cors = require('cors');
 var mdao = require('./src/mdao.js');
+var data = require('./src/armyData.js');
 
 app.use(cors());
-
 
 app.get('/log', (req, res, next) => {
 	res.json({
@@ -15,20 +15,27 @@ app.get('/log', (req, res, next) => {
 	});
 });
 
+app.get('/places/:city/:army', (req, res, next) => {
+	const city = req.params.city;
+	const army = req.params.army;
+	data.armyData;
+	data.cityArmy;
+	const armyData = data.armyData.filter((d) => d.key == army)[0];
+	const cityArmy = data.cityArmy.filter((d) => d.city == city)[0];
+	const cityArmyData = data.armyData.filter((d) => cityArmy.army.indexOf(d.key) != -1);
+
+	res.json({ armyData, cityArmyData });
+});
+
 app.get('/search/:fname/:lname/:city', (req, res, next) => {
 	const fname = req.params.fname;
 	const lname = req.params.lname;
 	const city = req.params.city;
 
-
-
-    mdao
-    .getPersons(fname,lname,city)
-    .then((persons) => {
-       res.json(persons);
+	mdao.getPersons(fname, lname, city).then((persons) => {
+		res.json(persons);
 	});
 });
-
 
 function distance(a, b) {
 	if (a.length == 0) return b.length;
