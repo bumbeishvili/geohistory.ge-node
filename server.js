@@ -20,9 +20,10 @@ app.get('/places/:city/:army', (req, res, next) => {
 	const army = req.params.army;
 	data.armyData;
 	data.cityArmy;
-	const armyData = data.armyData.filter((d) => d.key == army)[0];
+	let armyData = data.armyData.filter((d) => d.key == army)[0];
+   
 	const cityArmy = data.cityArmy.filter((d) => d.city == city)[0];
-	const cityArmyData = data.armyData.filter((d) => cityArmy.army.indexOf(d.key) != -1);
+	const cityArmyData = data.armyData.filter((d) => cityArmy.army.indexOf(d.key) != -1).slice(0,1);
 
 	res.json({ armyData, cityArmyData });
 });
